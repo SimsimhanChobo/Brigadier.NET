@@ -5,8 +5,8 @@ namespace Brigadier.NET.Exceptions
 {
 	public class CommandSyntaxException : Exception
 	{
-		public static readonly IBuiltInExceptionProvider BuiltInExceptions = new BuiltInExceptions();
 		public static int ContextAmount = 10;
+		public static IBuiltInExceptionProvider BuiltInExceptions = new BuiltInExceptions();
 
 		private readonly IMessage _message;
 
