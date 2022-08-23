@@ -194,7 +194,8 @@ namespace Brigadier.NET
 			       || c >= 'A' && c <= 'Z'
 			       || c >= 'a' && c <= 'z'
 			       || c == '_' || c == '-'
-			       || c == '.' || c == '+';
+			       || c == '.' || c == '+'
+				   || c == ':';
 		}
 
 		public string ReadUnquotedString()
