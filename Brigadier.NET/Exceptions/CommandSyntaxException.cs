@@ -9,6 +9,7 @@ namespace Brigadier.NET.Exceptions
 		public static IBuiltInExceptionProvider BuiltInExceptions = new BuiltInExceptions();
 
 		private readonly IMessage _message;
+		
 
 		public CommandSyntaxException(ICommandExceptionType type, IMessage message)
 			: base(message.String, null)
@@ -28,18 +29,26 @@ namespace Brigadier.NET.Exceptions
 			Cursor = cursor;
 		}
 
+		public string CustomMessage { get; set; }
+
 		public override string Message
 		{
 			get
 			{
-				var message = _message.String;
-				var context = Context;
-				if (context != null)
+				if (string.IsNullOrEmpty(CustomMessage))
 				{
-					message += $" at position {Cursor}: {context}";
+					var message = _message.String;
+					var context = Context;
+					if (context != null)
+					{
+						message += $" at position {Cursor}: {context}";
+					}
+					return message;
 				}
-				return message;
-
+				else
+				{
+					return CustomMessage;
+				}
 			}
 		}
 
